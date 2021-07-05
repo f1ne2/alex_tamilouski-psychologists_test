@@ -1,0 +1,34 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - 'plugin:react/recommended'
+  - airbnb
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 12
+  sourceType: module
+plugins:
+  - react
+  - '@typescript-eslint'
+"settings": {
+  "import/resolver": {
+    "node": {
+      "extensions": [".js", ".jsx", ".ts", ".tsx"]
+    }
+  }
+}
+rules: {
+  "no-use-before-define": ["off", { "functions": true, "classes": true }],
+  "no-console": "off",
+  "import/prefer-default-export": "off",
+  "object-curly-newline": "off",
+  "object-property-newline": "off",
+  'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
+  "react/jsx-first-prop-new-line": "off",
+  "react/jsx-max-props-per-line": "off",
+  "max-len": "off",
+  "import/extensions": "off",
+}
