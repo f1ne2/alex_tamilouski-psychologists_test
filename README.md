@@ -19,3 +19,7 @@ Firebase Hosting
 Ссылку на GitHub репозиторий сдать как результат тестового задания.
 В README file в репозитории создать ссылку на DEMO который хостится на Firebase Hosting.
 
+
+Deploy here
+https://psychologists-7a2da.web.app/
+
