@@ -9,11 +9,11 @@ import Time from './Time';
 import { getData } from './workWithDB/getData';
 
 export default class Booking extends React.Component<{}, {
-  loading: string, data: { name: string, consultationTime: string, time: [string, string][] }[][],
+  loading: boolean, data: { name: string, consultationTime: string, time: [string, string][] }[][],
   activeDate: (string | number)[], activeTime: string, timeIndex: number, slideNumber: number}> {
   constructor(props: any) {
     super(props);
-    this.state = { loading: 'true', data: [], activeDate: ['', new Date().getDate(), 'Сегодня'],
+    this.state = { loading: true, data: [], activeDate: ['', new Date().getDate(), 'Сегодня'],
       activeTime: `${String(this.zeros(new Date().getHours()))}:${String(this.zeros(new Date().getMinutes()))}`,
       timeIndex: 0, slideNumber: 0,
     };
@@ -21,10 +21,10 @@ export default class Booking extends React.Component<{}, {
 
   // получаем данные из базы данных
   componentDidMount() {
-    this.setState({ loading: 'true' });
+    this.setState({ loading: true });
     const res = getData('psychologists');
     res.then((data: { name: string, consultationTime: string,
-      time: [string, string][] }[][]) => this.setState({ data, loading: 'false',
+      time: [string, string][] }[][]) => this.setState({ data, loading: false,
       slideNumber: data[0].length - 1 }))
       .catch((e) => {
         console.log(e);
@@ -94,7 +94,7 @@ export default class Booking extends React.Component<{}, {
     const { loading, activeDate, activeTime, timeIndex, data } = this.state;
     const slideOpts = { initialSlide: 1, speed: 400, slidesPerView: 1, spaceBetween: 8 };
     const secondSlideOpts = { initialSlide: 0, speed: 400, slidesPerView: 3.3, spaceBetween: 8 };
-    if (loading === 'true') {
+    if (loading) {
       return <h2>Loading...</h2>;
     }
     return (
