@@ -1,0 +1,7 @@
+{
+  "name": "psychologistBooking",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
